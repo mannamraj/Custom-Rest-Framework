@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+-->
+<!DOCTYPE web-app PUBLIC '-//Sun Microsystems, Inc.//DTD Web 
+     Application 2.3//EN' 'http://java.sun.com/dtd/web-app_2_3.dtd'>
+
+<web-app>
+   
+    <servlet>
+         <servlet-name>FontController</servlet-name>
+         <servlet-class>com.raja.rest.FrontController</servlet-class>
+         <init-param>
+         <param-name>package</param-name>
+         <param-value>com.rest</param-value>
+         </init-param>
+         <load-on-startup>1</load-on-startup>
+     </servlet>
+     
+     <servlet-mapping>
+     <servlet-name>FontController</servlet-name>
+     <url-pattern>/rest/*</url-pattern>
+     </servlet-mapping>
+ 
+</web-app>
