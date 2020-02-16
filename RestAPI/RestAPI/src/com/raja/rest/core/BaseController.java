@@ -28,23 +28,16 @@ public abstract class BaseController extends HttpServlet{
 	
 	public abstract Config getConfig();
 	
+	public static final String SCANNER_PARAM = "package";
+	
 	@Override
 	public void init(ServletConfig servletConfig) throws ServletException {
 		
 		super.init(servletConfig);
 		
-		setConfig(new RestWebConfiguration().basePack(servletConfig.getInitParameter("package")).loadConfiguration());
+		setConfig(new RestWebConfiguration().basePack(servletConfig.getInitParameter(SCANNER_PARAM)).loadConfiguration());
 
-		//setInvoker(new RestInvoker().setMapper(EndPointMapper.build()).getEndPointMapper().map(new ClassLoader().load(this.getConfig().getPack()))));
-		
 		setInvoker(new RestInvoker().setMapper(EndPointMapper.build()).setConfig(getConfig()).setLoader(new ClassLoader()).build());
-
-		
-		/*EndPointMapper.build();
-		
-		loader = new ClassLoader();
-		
-		this.getEndPointMapper().map(this.getLoader().load(this.getPack()));*/
 		
 	}
 
