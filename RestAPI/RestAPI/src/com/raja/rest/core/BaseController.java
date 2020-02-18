@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.raja.rest.annotations.RestService;
 import com.raja.rest.common.Invoker;
 import com.raja.rest.common.impl.ClassLoader;
 import com.raja.rest.common.impl.RestInvoker;
@@ -37,7 +38,11 @@ public abstract class BaseController extends HttpServlet{
 		
 		setConfig(new RestWebConfiguration().basePack(servletConfig.getInitParameter(SCANNER_PARAM)).loadConfiguration());
 
-		setInvoker(new RestInvoker().setMapper(EndPointMapper.build()).setConfig(getConfig()).setLoader(new ClassLoader()).build());
+		setInvoker(new RestInvoker()
+				.setMapper(EndPointMapper.build())
+				.setConfig(getConfig())
+				.setLoader(new ClassLoader()
+				.setAnnotationClass(RestService.class)).build());
 		
 	}
 

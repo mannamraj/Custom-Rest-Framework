@@ -30,6 +30,7 @@ public class RestInvoker  implements Invoker<Config,Mapper<?, ?>>{
 
 	private Config config = null;
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public void invoke(Config config,HttpServletRequest request,HttpServletResponse response) {
 		
